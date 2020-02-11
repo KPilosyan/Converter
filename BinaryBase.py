@@ -8,17 +8,17 @@ class BinaryBase(ABC):
 
     @abstractmethod
     def getKeys(self):
-        pass
+        return 
 
     @abstractmethod
     def validateValue(self):
-        pass
+        return 
 
     @abstractmethod
     def validateKeys(self):
-        pass
+        return 
             
     @abstractmethod
     def convert(self):
-        pass
+        return 
 

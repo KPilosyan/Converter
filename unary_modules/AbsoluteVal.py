@@ -1,10 +1,13 @@
-from .. import UnaryBase
+from BinaryBase import BinaryBase
 
-class Inverse(UnaryBase.UnaryBase):
+class Inverse(BinaryBase):
     def validateValue(self):
         return self._val.isdigit()
 
-    def getKeywords(self):
+    def validateKeys(self):
+        return self.to in self.getKeys()
+
+    def getKeys(self):
         keywords = ("abs", "absolute")
         return keywords
 
