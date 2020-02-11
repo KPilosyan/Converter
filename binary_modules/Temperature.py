@@ -7,25 +7,25 @@ class Temperature(BinaryBase):
     def validateKeys(self):
         return (self.fr in self.getKeys() and self.to in self.getKeys())
 
-    def getMetrics(self):
+    def getKeys(self):
         __metrics = ("c","k","f", "celsus", "kelvin", "fahrenheit")
         return __metrics
 
     def convert(self):
         if self.fr in ("f", "fahrenheit") and self.to in ("k", "kelvin"):
-            return (self._val - 32)*5/9 + 273.15
+            return (int(self._val) - 32)*5/9 + 273.15
         elif self.fr in ("k", "kelvin") and self.to in ("f", "fahrenheit"):
-            return (self._val - 273.15)*9/5 + 32
+            return (int(self._val) - 273.15)*9/5 + 32
         elif self.fr in ("c", "celsus") and self.to in ("k", "kelvin"):
-            return self._val + 273.15
+            return int(self._val) + 273.15
         elif self.fr in ("k", "kelvin") and self.to in ("c", "celsus"):
-            return self._val - 273.15
+            return int(self._val) - 273.15
         elif self.fr in ("c", "celsus") and self.to in ("f", "fahrenheit"):
-            return (self._val*9/5) + 32
+            return (int(self._val)*9/5) + 32
         elif self.fr in ("f", "fahrenheit") and self.to in ("c", "celsus"):
-            return (self._val - 32)*5/9
+            return (int(self._val) - 32)*5/9
         elif self.fr == self.to:
-            return self._val
+            return int(self._val)
         
 
 

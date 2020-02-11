@@ -15,11 +15,9 @@ class Currency(BinaryBase):
         url = 'https://api.exchangeratesapi.io/latest'
         r = requests.get(url, params={'base':'USD'})
         __metrics = json.loads(r.text)['rates']
+        # TODO: make lowecase
         return __metrics
        
     def convert(self):
-        return self._val*self.getKeys()[self.to]/self.getKeys()[self.fr]
+        return int(self._val)*self.getKeys()[self.to]/self.getKeys()[self.fr]
         
-    # def get_class_name(self):
-    #     return __class__.__name__
-  

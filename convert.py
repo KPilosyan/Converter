@@ -4,11 +4,13 @@ from ConverterFactory import ConverterFactory
 def main():
 
     if args.fr:
-        a = ConverterFactory(args.val, args.fr, args.to)
-        a.getBinaryConverter()
+        directory = "binary_modules"
+        bi = ConverterFactory()
+        print(bi.getConverter(directory))
     else:
-        a = ConverterFactory(args.val, args.fr, args.to)
-        a.getUnaryConverter()
+        directory = "unary_modules"
+        un = ConverterFactory()
+        print(un.getConverter(directory))
 
 main()
 

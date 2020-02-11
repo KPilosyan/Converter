@@ -12,7 +12,5 @@ class Inverse(BinaryBase):
         return keywords
 
     def convert(self):
-        if self.validateValue():
-            return abs(self._val)
-        else:
-            raise Exception
+        return abs(int(self._val))
+    

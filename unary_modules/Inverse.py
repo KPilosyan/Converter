@@ -12,7 +12,7 @@ class Inverse(BinaryBase):
         return keys
 
     def convert(self):
-        return 1/self._val
+        return 1/int(self._val)
         
 
     

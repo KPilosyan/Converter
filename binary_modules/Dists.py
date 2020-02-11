@@ -12,5 +12,5 @@ class Dists(BinaryBase):
         return __metrics
 
     def convert(self):
-        return self._val*self.getKeys()[self.fr]/self.getKeys()[self.to]
+        return int(self._val)*self.getKeys()[self.fr]/self.getKeys()[self.to]
         
