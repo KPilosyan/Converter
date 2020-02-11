@@ -1,18 +1,18 @@
-from BinaryBase import BinaryBase
+from .. import UnaryBase
 
-class Inverse(BinaryBase):
+class Inverse(UnaryBase.UnaryBase):
     def validateValue(self):
         return self._val.isdigit()
         
-    def validateKeys(self):
-        return self.to in self.getKeys()
-
-    def getKeys(self):
-        keys = ("inv", "inverse")
-        return keys
+    def getKeywords(self):
+        keywords = ("inv", "inverse")
+        return keywords
 
     def convert(self):
-        return 1/self._val
-        
+        if self.validateValue():
+            return 1/self._val
+        else:
+            raise Exception
+
 
     

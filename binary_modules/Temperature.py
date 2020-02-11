@@ -1,32 +1,25 @@
-from BinaryBase import BinaryBase
+from .. import MetricBase
 
-class Temperature(BinaryBase):
-    def validateValue(self):
-        return self._val.isdigit()
-
-    def validateKeys(self):
-        return (self.fr in self.getKeys() and self.to in self.getKeys())
-
+class Temperature(MetricBase.MetricBase):
     def getMetrics(self):
-        __metrics = ("c","k","f", "celsus", "kelvin", "fahrenheit")
+        __metrics = {"c": None,"k": None,"f": None}
         return __metrics
 
     def convert(self):
-        if self.fr in ("f", "fahrenheit") and self.to in ("k", "kelvin"):
+        if self.fr == "f" and self.to == "k":
             return (self._val - 32)*5/9 + 273.15
-        elif self.fr in ("k", "kelvin") and self.to in ("f", "fahrenheit"):
+        elif self.fr == "k" and self.to == "f":
             return (self._val - 273.15)*9/5 + 32
-        elif self.fr in ("c", "celsus") and self.to in ("k", "kelvin"):
+        elif self.fr == "c" and self.to == "k":
             return self._val + 273.15
-        elif self.fr in ("k", "kelvin") and self.to in ("c", "celsus"):
+        elif self.fr == "k" and self.to == "c":
             return self._val - 273.15
-        elif self.fr in ("c", "celsus") and self.to in ("f", "fahrenheit"):
+        elif self.fr == "c" and self.to == "f":
             return (self._val*9/5) + 32
-        elif self.fr in ("f", "fahrenheit") and self.to in ("c", "celsus"):
+        elif self.fr == "f" and self.to == "c":
             return (self._val - 32)*5/9
         elif self.fr == self.to:
             return self._val
-        
 
 
 

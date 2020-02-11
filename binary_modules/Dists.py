@@ -1,16 +1,9 @@
-from BinaryBase import BinaryBase
+from ... import MetricBase
 
-class Dists(BinaryBase):
-    def validateValue(self):
-        return self._val.isdigit()
-
-    def validateKeys(self):
-        return (self.fr in self.getKeys() and self.to in self.getKeys())
-
-    def getKeys(self):
+class Dists(MetricBase.MetricBase):
+    def getMetrics(self):
         __metrics = {'mm':0.001, 'cm':0.01, 'm':1, 'km':1000}
         return __metrics
 
     def convert(self):
-        return self._val*self.getKeys()[self.fr]/self.getKeys()[self.to]
-        
+        return self._val*self.getMetrics()[self.fr]/self.getMetrics()[self.to]
