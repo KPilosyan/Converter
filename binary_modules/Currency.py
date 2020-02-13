@@ -6,7 +6,7 @@ import json
 
 class Currency(BinaryBase):
     def validateValue(self):
-        return self._val.isdigit()
+        return float(self._val)
 
     def validateKeys(self):
         return (self.fr in self.getKeys() and self.to in self.getKeys())
@@ -14,9 +14,9 @@ class Currency(BinaryBase):
     def getKeys(self):
         url = 'https://api.exchangeratesapi.io/latest'
         r = requests.get(url, params={'base':'USD'})
-        __metrics = json.loads(r.text)['rates']
-        # TODO: make lowecase
-        return __metrics
+        __keys = json.loads(r.text)['rates']
+        __keys =  {k.lower(): v for k, v in __keys.items()}
+        return __keys
        
     def convert(self):
         return int(self._val)*self.getKeys()[self.to]/self.getKeys()[self.fr]

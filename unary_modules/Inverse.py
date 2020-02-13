@@ -2,7 +2,7 @@ from BinaryBase import BinaryBase
 
 class Inverse(BinaryBase):
     def validateValue(self):
-        return self._val.isdigit()
+        return float(self._val)
         
     def validateKeys(self):
         return self.to in self.getKeys()

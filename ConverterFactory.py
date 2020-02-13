@@ -15,11 +15,3 @@ class ConverterFactory:
                     if inspect.isclass(attribute) and inspect.isabstract(attribute) == False and attribute(args.val, args.fr, args.to).validateKeys() and attribute(args.val, args.fr, args.to).validateValue():
                         return attribute(args.val, args.fr, args.to).convert()
         return "Incorrect parameter(s)"
-        
-  
-                   
-       
-     
-
-
-        

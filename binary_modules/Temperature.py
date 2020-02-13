@@ -2,14 +2,14 @@ from BinaryBase import BinaryBase
 
 class Temperature(BinaryBase):
     def validateValue(self):
-        return self._val.isdigit()
+        return float(self._val)
 
     def validateKeys(self):
         return (self.fr in self.getKeys() and self.to in self.getKeys())
 
     def getKeys(self):
-        __metrics = ("c","k","f", "celsus", "kelvin", "fahrenheit")
-        return __metrics
+        _keys = ("c","k","f", "celsus", "kelvin", "fahrenheit")
+        return _keys
 
     def convert(self):
         if self.fr in ("f", "fahrenheit") and self.to in ("k", "kelvin"):
