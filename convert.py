@@ -3,14 +3,11 @@ from ConverterFactory import ConverterFactory
 
 def main():
 
-    if args.fr:
-        directory = "binary_modules"
-        bi = ConverterFactory()
-        print(bi.getConverter(directory))
-    else:
-        directory = "unary_modules"
-        un = ConverterFactory()
-        print(un.getConverter(directory))
+    obj = ConverterFactory()
+    try:
+        print(obj.getConverter())
+    except Exception as e:
+        print(e)
 
 main()
 

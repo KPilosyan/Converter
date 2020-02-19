@@ -4,12 +4,12 @@ class Temperature(BinaryBase):
     def validateValue(self):
         return float(self._val)
 
-    def validateKeys(self):
-        return (self.fr in self.getKeys() and self.to in self.getKeys())
+    def validateKeywords(self):
+        return (self.fr in self.keywords() and self.to in self.keywords())
 
-    def getKeys(self):
-        _keys = ("c","k","f", "celsus", "kelvin", "fahrenheit")
-        return _keys
+    def keywords(self):
+        _keywords = ("c","k","f", "celsus", "kelvin", "fahrenheit")
+        return _keywords
 
     def convert(self):
         if self.fr in ("f", "fahrenheit") and self.to in ("k", "kelvin"):
@@ -26,6 +26,9 @@ class Temperature(BinaryBase):
             return (int(self._val) - 32)*5/9
         elif self.fr == self.to:
             return int(self._val)
+
+    def getInfo(self):
+        return 
         
 
 
