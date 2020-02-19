@@ -13,19 +13,19 @@ class Temperature(BinaryBase):
 
     def convert(self):
         if self.fr in ("f", "fahrenheit") and self.to in ("k", "kelvin"):
-            return (int(self._val) - 32)*5/9 + 273.15
+            return (float(self._val) - 32)*5/9 + 273.15
         elif self.fr in ("k", "kelvin") and self.to in ("f", "fahrenheit"):
-            return (int(self._val) - 273.15)*9/5 + 32
+            return (float(self._val) - 273.15)*9/5 + 32
         elif self.fr in ("c", "celsus") and self.to in ("k", "kelvin"):
-            return int(self._val) + 273.15
+            return float(self._val) + 273.15
         elif self.fr in ("k", "kelvin") and self.to in ("c", "celsus"):
-            return int(self._val) - 273.15
+            return float(self._val) - 273.15
         elif self.fr in ("c", "celsus") and self.to in ("f", "fahrenheit"):
-            return (int(self._val)*9/5) + 32
+            return (float(self._val)*9/5) + 32
         elif self.fr in ("f", "fahrenheit") and self.to in ("c", "celsus"):
-            return (int(self._val) - 32)*5/9
+            return (float(self._val) - 32)*5/9
         elif self.fr == self.to:
-            return int(self._val)
+            return float(self._val)
 
     def getInfo(self):
         return ("Converts temperature measuring metrics \nKeywords: "+ str(self.keywords()))

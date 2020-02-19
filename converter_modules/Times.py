@@ -14,7 +14,7 @@ class Times(BinaryBase):
         return _keywords
 
     def convert(self):
-        return int(self._val)*self._metrics[self.fr]/self._metrics[self.to]
+        return float(self._val)*self._metrics[self.fr]/self._metrics[self.to]
     
     def getInfo(self):
         return ("Converts time measurement units \nKeywords: "+ str(self.keywords()))

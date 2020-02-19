@@ -14,7 +14,7 @@ class Dists(BinaryBase):
 
     def convert(self):
         if self._metrics[self.to] != 0:
-            return int(self._val)*self._metrics[self.fr]/self._metrics[self.to]
+            return float(self._val)*self._metrics[self.fr]/self._metrics[self.to]
         raise Exception("Can't devide by 0")
         
     def get_info(self):

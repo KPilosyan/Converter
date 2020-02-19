@@ -13,7 +13,7 @@ class Inverse(BinaryBase):
 
     def convert(self):
         if self._val != 0:
-            return 1/int(self._val)
+            return 1/float(self._val)
         raise Exception("Can't divide by 0")
 
     def getInfo(self):

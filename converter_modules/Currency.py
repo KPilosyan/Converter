@@ -21,7 +21,7 @@ class Currency(BinaryBase):
        
     def convert(self):
         if self._metrics[self.fr] != 0:
-            return int(self._val)*self._metrics[self.to]/self._metrics[self.fr]
+            return float(self._val)*self._metrics[self.to]/self._metrics[self.fr]
         raise Exception("Can't divide by 0")
 
     def getInfo(self):
