@@ -21,7 +21,7 @@ class ConverterFactory:
         """ Goes through the mentioned directory and opens each file one by one with the first loop
         and keeps the modules in variable 'imported_module'. Then second loop goes through all attributes in the module 
         and filters only classes that are not abstract and are inherited from 'BinaryBase' class.
-            returns names of those classes as a list. """
+            returns names of those classes as a list."""
 
     def getConverter(self):
         for attribute in self.getConvertersList():

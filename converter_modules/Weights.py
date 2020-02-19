@@ -10,13 +10,13 @@ class Weights(BinaryBase):
         return (self.fr in self.keywords() and self.to in self.keywords())
 
     def keywords(self):
-        _keywords = self._metrics.keys()
+        _keywords = tuple(self._metrics.keys())
         return _keywords
 
     def convert(self):
         return int(self._val)*self._metrics[self.fr]/self._metrics[self.to]
 
     def getInfo(self):
-        return 
+        return("Converts weight measurement units \nKeywords: "+ str(self.keywords()))
 
     

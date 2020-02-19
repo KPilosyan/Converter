@@ -15,4 +15,4 @@ class AbsoluteVal(BinaryBase):
         return abs(int(self._val))
     
     def getInfo(self):
-        return ("Keywords:", " ".join(self.keywords)+ "\n Returns the absolute value of the number")
+        return ("Returns the absolute value of the inserted number \nKeywords: "+ str(self.keywords()))

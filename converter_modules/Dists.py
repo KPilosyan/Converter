@@ -18,8 +18,8 @@ class Dists(BinaryBase):
         raise Exception("Can't devide by 0")
         
     def get_info(self):
-        return """
+        return ("Converts metrics measuring distance \nKeywords: "+ str(self.keywords()))
 
-        """
+        
 
         

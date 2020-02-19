@@ -17,7 +17,7 @@ class Inverse(BinaryBase):
         raise Exception("Can't divide by 0")
 
     def getInfo(self):
-        return 
+        return ("Returns the inverse of the given number \nKeywords: "+ str(self.keywords()))
         
 
     

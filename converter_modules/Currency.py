@@ -17,7 +17,7 @@ class Currency(BinaryBase):
         return (self.fr in self.keywords() and self.to in self.keywords())
 
     def keywords(self):
-        return self._metrics.keys()
+        return tuple(self._metrics.keys())
        
     def convert(self):
         if self._metrics[self.fr] != 0:
@@ -25,4 +25,4 @@ class Currency(BinaryBase):
         raise Exception("Can't divide by 0")
 
     def getInfo(self):
-        return
+        return ("Converts currency values between one another \nKeywords: "+ str(self.keywords()))

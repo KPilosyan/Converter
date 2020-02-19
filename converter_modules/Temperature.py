@@ -28,7 +28,7 @@ class Temperature(BinaryBase):
             return int(self._val)
 
     def getInfo(self):
-        return 
+        return ("Converts temperature measuring metrics \nKeywords: "+ str(self.keywords()))
         
 
 
