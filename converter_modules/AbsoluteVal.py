@@ -2,7 +2,7 @@ from BinaryBase import BinaryBase
 
 class AbsoluteVal(BinaryBase):
     def validateValue(self):
-        return float(self._val)
+        return float(self._val) 
 
     def validateKeywords(self):
         return self.to in self.keywords()

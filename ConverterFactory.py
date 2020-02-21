@@ -33,8 +33,8 @@ class ConverterFactory:
         else:
             raise Exception("Invalid parameter(s)")  
         
-        """ Goes through 'GetConvertersList', finds the right converter and passes input parameters to convert(). 
-        In case of wrong user input(s), throws the according error"""
+        """ Goes through 'GetConvertersList', finds the right converter by using validate functions of each class 
+        and passes input parameters to convert(). In case of wrong user input(s), throws the according error"""
                                 
         
 
