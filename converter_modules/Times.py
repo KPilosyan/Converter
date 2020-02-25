@@ -4,7 +4,11 @@ class Times(BinaryBase):
     _metrics = {'msec': 1/60000, 'sec':1/60, 'min':1, 'hour':60, 'day':1440, 'week':10080, 'month':43800, 'year':525600}
 
     def validateValue(self):
-        return float(self._val)
+        try:
+            float(self._val)
+        except Exception:
+            return False
+        return True
         
     def validateKeywords(self):
         return (self.fr in self.keywords() and self.to in self.keywords())

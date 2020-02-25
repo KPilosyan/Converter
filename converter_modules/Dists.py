@@ -4,7 +4,11 @@ class Dists(BinaryBase):
     _metrics = {'mm':0.001, 'cm':0.01, 'm':1, 'km':1000}
 
     def validateValue(self):
-        return float(self._val)
+        try:
+            float(self._val)
+        except Exception:
+            return False
+        return True
 
     def validateKeywords(self):
         return (self.fr in self.keywords() and self.to in self.keywords())
@@ -17,7 +21,7 @@ class Dists(BinaryBase):
             return float(self._val)*self._metrics[self.fr]/self._metrics[self.to]
         raise Exception("Can't devide by 0")
         
-    def get_info(self):
+    def getInfo(self):
         return ("Converts metrics measuring distance \nKeywords: "+ str(self.keywords()))
 
         

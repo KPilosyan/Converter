@@ -2,7 +2,11 @@ from BinaryBase import BinaryBase
 
 class Square(BinaryBase):
     def validateValue(self):
-        return float(self._val)
+        try:
+            float(self._val)
+        except Exception:
+            return False
+        return True
         
     def validateKeywords(self):
         return self.to in self.keywords()

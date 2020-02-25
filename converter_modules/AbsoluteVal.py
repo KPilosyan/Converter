@@ -2,7 +2,13 @@ from BinaryBase import BinaryBase
 
 class AbsoluteVal(BinaryBase):
     def validateValue(self):
-        return float(self._val) 
+        if self._val == "-0":
+            raise Exception("No such thing as -0")
+        try:
+            float(self._val)
+        except Exception:
+            return False
+        return True
 
     def validateKeywords(self):
         return self.to in self.keywords()

@@ -11,7 +11,11 @@ class Currency(BinaryBase):
     _metrics =  {k.lower(): v for k, v in _metrics.items()}
 
     def validateValue(self):
-        return float(self._val)
+        try:
+            float(self._val)
+        except Exception:
+            return False
+        return True
 
     def validateKeywords(self):
         return (self.fr in self.keywords() and self.to in self.keywords())
