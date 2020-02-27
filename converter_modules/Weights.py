@@ -1,7 +1,6 @@
-from BinaryBase import BinaryBase
-import re
+from Base import Base
 
-class Weights(BinaryBase):
+class Weights(Base):
     _metrics = {'mg':0.001, 'g':1, 'kg':1000, 'ton':1000000, 'lbs':453.59237}
     
     def validateValue(self):

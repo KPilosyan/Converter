@@ -1,6 +1,6 @@
-from BinaryBase import BinaryBase
+from Base import Base
 
-class Times(BinaryBase):
+class Times(Base):
     _metrics = {'msec': 1/60000, 'sec':1/60, 'min':1, 'hour':60, 'day':1440, 'week':10080, 'month':43800, 'year':525600}
 
     def validateValue(self):

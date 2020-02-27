@@ -1,10 +1,10 @@
-from BinaryBase import BinaryBase
+from Base import Base
 
 import requests 
 import json
 
 
-class Currency(BinaryBase):
+class Currency(Base):
     url = 'https://api.exchangeratesapi.io/latest'
     r = requests.get(url, params={'base':'USD'})
     _metrics = json.loads(r.text)['rates']

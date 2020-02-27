@@ -1,11 +1,13 @@
-from BinaryBase import BinaryBase
+from Base import Base
 
-class Inverse(BinaryBase):
+class Inverse(Base):
     def validateValue(self):
         return True  #Doesn't matter digit or string 
         
     def validateKeywords(self):
-        return self.to in self.keywords()
+        if not self.fr:
+            return self.to in self.keywords()
+        raise Exception("Inverse doesn't require argument 'fr'") 
 
     def keywords(self):
         _keywords = ("inv", "inverse")

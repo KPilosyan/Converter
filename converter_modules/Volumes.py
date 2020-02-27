@@ -1,6 +1,6 @@
-from BinaryBase import BinaryBase
+from Base import Base
 
-class Volumes(BinaryBase):
+class Volumes(Base):
     _metrics = {'ml':0.000001, 'l':0.001, 'm3':1, 'km3':1000000000}
 
     def validateValue(self):

@@ -1,6 +1,6 @@
-from BinaryBase import BinaryBase
+from Base import Base
 
-class Dists(BinaryBase):
+class Dists(Base):
     _metrics = {'mm':0.001, 'cm':0.01, 'm':1, 'km':1000}
 
     def validateValue(self):

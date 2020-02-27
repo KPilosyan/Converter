@@ -1,6 +1,6 @@
-from BinaryBase import BinaryBase
+from Base import Base
 
-class Temperature(BinaryBase):
+class Temperature(Base):
     def validateValue(self):
         try:
             float(self._val)

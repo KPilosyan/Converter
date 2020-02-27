@@ -1,6 +1,6 @@
-from BinaryBase import BinaryBase
+from Base import Base
 
-class Square(BinaryBase):
+class Square(Base):
     def validateValue(self):
         try:
             float(self._val)
@@ -9,7 +9,9 @@ class Square(BinaryBase):
         return True
         
     def validateKeywords(self):
-        return self.to in self.keywords()
+        if not self.fr:
+            return self.to in self.keywords()
+        raise Exception("Square conversion doesn't require argument 'fr'") 
 
     def keywords(self):
         _keywords = ("square")

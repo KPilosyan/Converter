@@ -1,6 +1,6 @@
 from abc import ABC, abstractmethod 
 
-class BinaryBase(ABC):
+class Base(ABC):
     """ Abstract class from which others inherit. Takes main user inputs. """
     def __init__(self, val, fr, to):
         self._val = val

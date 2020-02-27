@@ -1,6 +1,6 @@
-from BinaryBase import BinaryBase
+from Base import Base
 
-class AbsoluteVal(BinaryBase):
+class AbsoluteVal(Base):
     def validateValue(self):
         if self._val == "-0":
             raise Exception("No such thing as -0")
@@ -11,7 +11,9 @@ class AbsoluteVal(BinaryBase):
         return True
 
     def validateKeywords(self):
-        return self.to in self.keywords()
+        if not self.fr:
+            return self.to in self.keywords()
+        raise Exception("Absolute value doesn't require argument 'fr'") 
 
     def keywords(self):
         _keywords = ("abs", "absolute")

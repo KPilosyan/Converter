@@ -1,4 +1,4 @@
-from BinaryBase import BinaryBase
+from Base import Base
 import os
 import inspect
 from argParser import args
@@ -13,7 +13,7 @@ class ConverterFactory:
                 for i in dir(imported_module):
                     attribute = getattr(imported_module, i)
 
-                    if inspect.isclass(attribute) and not inspect.isabstract(attribute) and issubclass(attribute, BinaryBase):
+                    if inspect.isclass(attribute) and not inspect.isabstract(attribute) and issubclass(attribute, Base):
                         converters_list.append(attribute)
                     
         return converters_list
