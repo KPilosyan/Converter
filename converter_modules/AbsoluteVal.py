@@ -11,9 +11,10 @@ class AbsoluteVal(Base):
         return True
 
     def validateKeywords(self):
-        if not self.fr:
-            return self.to in self.keywords()
-        raise Exception("Absolute value doesn't require argument 'fr'") 
+        if self.to in self.keywords() and self.fr:
+            raise Exception("Absolute value doesn't require argument 'fr'")
+        return self.to in self.keywords()
+         
 
     def keywords(self):
         _keywords = ("abs", "absolute")

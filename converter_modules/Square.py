@@ -9,9 +9,10 @@ class Square(Base):
         return True
         
     def validateKeywords(self):
-        if not self.fr:
-            return self.to in self.keywords()
-        raise Exception("Square conversion doesn't require argument 'fr'") 
+        if self.to in self.keywords() and self.fr:
+            raise Exception("Square conversion doesn't require argument 'fr'") 
+        return self.to in self.keywords()
+       
 
     def keywords(self):
         _keywords = ("square")

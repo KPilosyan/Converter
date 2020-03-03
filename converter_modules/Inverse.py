@@ -5,9 +5,10 @@ class Inverse(Base):
         return True  #Doesn't matter digit or string 
         
     def validateKeywords(self):
-        if not self.fr:
-            return self.to in self.keywords()
-        raise Exception("Inverse doesn't require argument 'fr'") 
+        if self.to in self.keywords() and self.fr:
+            raise Exception("Inverse doesn't require argument 'fr'")
+        return self.to in self.keywords()
+         
 
     def keywords(self):
         _keywords = ("inv", "inverse")
