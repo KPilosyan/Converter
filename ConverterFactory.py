@@ -1,44 +1,42 @@
-from BinaryBase import BinaryBase
+from Base import Base
 import os
 import inspect
+from argParser import args
 
 class ConverterFactory:
-    def __init__(self, fr, to):
-        self.fr = fr
-        self.to = to
+    def getConvertersList(self):
+        converters_list = []
+        directory = "converter_modules"
+        for filename in os.listdir(directory):
+            if filename.endswith(".py"):   #filter .py files
+                imported_module = __import__(directory + "." + filename[:-3], fromlist=filename[:-3])  #delete '.py' part of module name
+                for i in dir(imported_module):
+                    attribute = getattr(imported_module, i)
 
-    def getBinaryConverter(self):
-        try:
-            directory = 'binary_modules'
-            for filename in os.listdir(directory):
-                if filename.endswith(".py"):
-                    imported_module = __import__(directory + "." + filename[:-3], fromlist=filename[:-3])
-                    print(imported_module)
-                    for i in dir(imported_module):
-                        attribute = getattr(imported_module, i)
-                        if inspect.isclass(attribute) and issubclass(attribute, BinaryBase) and attribute.validateKeys():
-                            return attribute
-                    return "Error!"
+                    if inspect.isclass(attribute) and not inspect.isabstract(attribute) and issubclass(attribute, Base):
+                        converters_list.append(attribute)
+                    
+        return converters_list
 
-        except Exception as e:
-            print(e)
+        """ Goes through the mentioned directory and opens each file one by one with the first loop
+        and keeps the modules in variable 'imported_module'. Then second loop goes through all attributes in the module 
+        and filters only classes that are not abstract and are inherited from 'BinaryBase' class.
+            returns names of those classes as a list."""
+
+    def getConverter(self):
+        for attribute in self.getConvertersList():
+            if attribute(args.val, args.fr, args.to).validateKeywords():  
+                if attribute(args.val, args.fr, args.to).validateValue():
+                    return attribute(args.val, args.fr, args.to).convert()
+                else:
+                    raise Exception("Invalid value input")
+        else:
+            raise Exception("Invalid parameter(s)")  
         
-    def getUnaryConverter(self):
-        try:
-            directory = 'unary_modules'
-            for filename in os.listdir(directory):
-                if filename.endswith(".py"):
-                    imported_module = __import__(directory + "." + filename[:-3], fromlist=filename[:-3])
-                    print(imported_module)
-                    for i in dir(imported_module):
-                        attribute = getattr(imported_module, i)
-                        if inspect.isclass(attribute) and issubclass(attribute, BinaryBase) and attribute.validateKeys():
-                            return attribute
-                    return "Error!"
-        except Exception as e:
-            print(e)
+        """ Goes through 'GetConvertersList', finds the right converter by using validate functions of each class 
+        and passes input parameters to convert(). In case of wrong user input(s), throws the according error"""
+                                
+        
 
-     
-
-
+    
         
